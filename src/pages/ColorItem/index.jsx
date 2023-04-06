@@ -3,44 +3,29 @@ import { useParams, useNavigate } from 'react-router-dom';
 import React from 'react';
 import { Link } from 'react-router-dom';
 function ColorItem() {
-    let colorSubArray;
-    const {name} = useParams() 
+    const {hex} = useParams() 
     const navigate = useNavigate()
-
+    const newHash = `#${hex}`
   useEffect( () => {
-     fetchColors()
+    setColorToPage()
   }, [])
-  const [svgtemp, setsvgtemp] = useState({images: {} })
-  const [color, setColor] = useState([]);
-  
-  const fetchColors = async () => {
-    const fetchColor = await fetch(
-      `https://api.color.pizza/v1/names/?name=${name}`
-    )
-    const colorsFetched = await fetchColor.json()
-    console.log(colorsFetched.colors)
-    if (colorsFetched.colors.length > 1) {
-      setColor([colorsFetched.colors]);
-    }else if( colorsFetched.colors.length == 1){
-      setColor([colorsFetched.colors[0]]);
-    }else{
-      setColor({});
-    }
+  const setColorToPage = () => {
+    //document.body.style.backgroundColor = '#${hex}';
+
+    const containerColour = document.querySelector("colourContainer")
   }
-    colorSubArray = color.slice(0);
-   console.log("asdas",colorSubArray[0]);
-   console.log(color);
+  console.log(newHash)
     return (
       <>
-      
-      <h1>{color.length > 0 ? color[0].name : 'Color not found'}</h1>
-       <p>{color.swatchImg}</p>
+      <div id="pageContent">
+        <h1>Color Item</h1>
+        <h2>Hex: {hex}</h2>
+        <h2>Here's your beautiful colour!</h2>
+        <div style={{backgroundColor:newHash}}id = "colourContainer"></div>
       <button onClick={() => navigate("/color")}>Back</button>
+      </div>
       </>
     )  
-  
-  
-  
 }
 
 export default ColorItem

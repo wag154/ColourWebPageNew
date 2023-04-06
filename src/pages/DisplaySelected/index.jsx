@@ -4,7 +4,7 @@ export default function DisplaySelection (){
   
   const generateNewHex = () =>{
     let hexArr = []
-    const numbers = Math.floor(Math.random()*9)
+    const numbers = (Math.floor(Math.random()*(10-1) + 1)) - 1
     const hexLimitedLetters = Math.floor(Math.random()*6)
     const hexLetters = ["A","B","C","D","E","F"]
     

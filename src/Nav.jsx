@@ -17,6 +17,9 @@ function Nav() {
         <NavLink to="/color" style={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>Color List</NavLink>
+            <NavLink to ="/NewColor" style = {({isActive}) =>
+              isActive ? activeStyle : undefined}>Enter New Colour</NavLink>
+            
       </ul>
     </nav>
     <Outlet />
